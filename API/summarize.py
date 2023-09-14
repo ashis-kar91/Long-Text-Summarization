@@ -21,7 +21,7 @@ def main(file_path):
     setup_openai(config)
     chatgpt_model_name = config.get('OpenAI', 'CHATGPT_MODEL')
 
-    encoding = tiktoken.encoding_for_model("gpt-35-turbo-16k")
+    encoding = tiktoken.encoding_for_model(chatgpt_model_name)
     total_tokens = 0
     exe_count = 0
     page_input = ""
