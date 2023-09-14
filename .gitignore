@@ -401,4 +401,4 @@ FodyWeavers.xsd
 *.ini
 
 # input files
-input_files/*
+API/input_files/*
