@@ -1,7 +1,7 @@
 import configparser
+import time
 import openai
 import PyPDF2
-import time
 import tiktoken
 
 
@@ -15,10 +15,8 @@ def extract_text_from_pdf(pdf_file_path):
     return pages
 
 
-def main():
-    file_path = r"input_files\transcript-q1pdf.pdf"
+def main(file_path):
     pages = extract_text_from_pdf(file_path)
-
     config = read_config()
     setup_openai(config)
     chatgpt_model_name = config.get('OpenAI', 'CHATGPT_MODEL')
@@ -65,14 +63,15 @@ def main():
             pagescopy.append(summary_page)
         if(len(pagescopy) == 1):
             break
-    print(pagescopy[0])
+    # print(pagescopy[0])
+    return pagescopy[0]
 
 def get_summary(chatgpt_model_name, page_input):
     return openai.ChatCompletion.create(
                     engine=chatgpt_model_name,
                     messages=[
-                            {"role": "system", "content": "You are a large text summerization bot"},
-                            {"role": "user", "content": "Can you summeraize this: " + page_input}
+                            {"role": "system", "content": "You are a large text summerization bot. Your job is to provide as detailed summary as possible, based on the context of the document."},
+                            {"role": "user", "content": "Can you provide a detailed summary of this: " + page_input}
                         ],
                     temperature=0.2
                     )
@@ -91,5 +90,5 @@ def read_config():
     return config
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main(r"input_files\transcript-q1pdf.pdf")
