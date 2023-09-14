@@ -74,11 +74,7 @@ def get_summary(chatgpt_model_name, page_input):
                             {"role": "system", "content": "You are a large text summerization bot"},
                             {"role": "user", "content": "Can you summeraize this: " + page_input}
                         ],
-                    temperature=0.9,
-                    max_tokens=150,
-                    top_p=1,
-                    frequency_penalty=0.0,
-                    presence_penalty=0.0
+                    temperature=0.2
                     )
 
 
