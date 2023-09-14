@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # Python config file
 *.ini
+
+# input files
+input_files/*
