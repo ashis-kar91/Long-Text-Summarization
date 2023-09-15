@@ -70,7 +70,7 @@ def get_summary(chatgpt_model_name, page_input):
     return openai.ChatCompletion.create(
                     engine=chatgpt_model_name,
                     messages=[
-                            {"role": "system", "content": "You are a large text summerization bot. Your job is to provide as detailed summary as possible, based on the context of the document."},
+                            {"role": "system", "content": "You are a large text summerization bot. Your job is to provide summary with contextual details. Provide long summaries with all the important data points"},
                             {"role": "user", "content": "Can you provide a detailed summary of this: " + page_input}
                         ],
                     temperature=0.2
