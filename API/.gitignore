@@ -401,4 +401,8 @@ FodyWeavers.xsd
 *.ini
 
 # input files
-API/input_files/*
+input_files/*
+
+# venv files
+
+testvenv/
